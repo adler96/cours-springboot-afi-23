@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	  layout:decorate="layout">
+	
+	<head>
+		<title>List Products</title>
+
+		<link rel="stylesheet" 
+			type="text/css" 
+			href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+			  integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+			  crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	
+	<body>
+
+	<div layout:fragment="content">
+		
+		<div class="container pt-5">
+			<a
+					class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+
+			>
+				<div class="flex items-center">
+					<svg
+							class="w-5 h-5 mr-2"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+					>
+						<path
+								d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+						></path>
+					</svg>
+					<span>Welcome to Product inventory</span>
+				</div>
+				<span>View more &RightArrow;</span>
+			</a>
+
+			<a class="uppercase mt-2 tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+				Product list
+			</a>
+			
+
+
+			<br/><br/>
+
+
+			<a th:href="@{/addProductForm}" class="btn bg-indigo-500 mb-2 text-white" >
+				Add new Product</a>
+			<table class="table table-bordered table-striped" id="ProductTable">
+			
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="product: ${products}">
+						<td th:text="${product.id}" />
+						<td th:text="${product.name}" />
+						<td th:text="${product.price}" />
+						<td th:text="${product.quantity}" />
+						<td>
+							<a th:href="@{/productDetails(productId=${product.id})}">
+							<i
+							   class="fa-solid fa-eye text-xl text-indigo-500"></i></a>
+
+
+
+<!--							<a th:href="@{/showUpdateForm(productId=${product.id})}" class="btn btn-info">Update</a>-->
+<!--							-->
+<!--							<a th:href="@{/deleteProduct(productId=${product.id})}" class="btn btn-danger ml-2">Delete</a>-->
+						</td>
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#ProductTable").DataTable({
+						'aoColumnDefs': [{
+        				'bSortable': false,
+        				'aTargets': [-1] /* 1st one, start by the right */
+    				}]
+				});
+			})
+		</script>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+	</body>
+
+	
+</html>

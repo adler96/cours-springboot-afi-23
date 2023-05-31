@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">SpringBoot AdminLTE</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <div th:replace="/fragments/header"></div>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+
+<!--    <aside class="main-sidebar">-->
+<!--        <div th:replace="/fragments/main-sidebar"></div>-->
+<!--    </aside>-->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+<!--        <section class="content-header" layout:fragment="header"></section>-->
+        <!-- Main content -->
+        <section class="content">
+
+            <div layout:fragment="content"></div>
+
+        </section>
+
+    </div>
+    <!-- /.content-wrapper -->
+<!--    <footer class="main-footer">-->
+<!--        <div th:replace="/fragments/footer"></div>-->
+<!--    </footer>-->
+
+    <!-- Control Sidebar -->
+    <!--<aside class="control-sidebar control-sidebar-dark">
+        <div th:replace="/fragments/control-sidebar"></div>
+    </aside>-->
+</div>
+<!-- ./wrapper -->
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+
+
+
+<th:block layout:fragment="script"></th:block>
+
+</body>
+</html>

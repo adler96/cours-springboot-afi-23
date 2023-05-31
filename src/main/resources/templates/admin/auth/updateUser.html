@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.6 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="hold-transition login-page">
+
+
+<div class="w-screen h-screen flex justify-center items-center
+    bg-gradient-to-br from-purple-700 to-amber-700">
+    <form th:action="@{/newUser/save}" th:object="${user}" method="post" class="p-10 bg-white rounded-xl drop-shadow-lg space-y-5">
+        <h1 class="text-center text-3xl">Formulaire modification</h1>
+        
+        <div class="flex flex-col space-y-2">
+            
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="text" placeholder="Votre Nom"
+                   th:field="*{nom}" id="nom" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="text" placeholder="Votre prenom"
+                   th:field="*{prenom}" id="prenom" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="email" placeholder="Votre login"
+                   th:field="*{login}" id="login" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="flex flex-col space-y-2">
+           
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="password"
+                   placeholder="Your Password" th:field="*{password}" id="password" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <button class="w-full px-10 py-2 bg-blue-600 text-white rounded-md
+            hover:bg-blue-500 hover:drop-shadow-md duration-300 ease-in" type="submit">
+            Modifier
+        </button>
+
+    </form>
+</div>
+
+<!-- jQuery 2.2.0 -->
+<script src="/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<!--<script src="/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>-->
+</body>
+</html>

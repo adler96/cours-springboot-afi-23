@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Register</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.6 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="hold-transition login-page">
+
+
+<div class="w-screen h-screen flex justify-center items-center
+    bg-gradient-to-br from-purple-700 to-amber-700">
+    <form th:action="@{/register}" th:object="${userRegistrationDto}" method="post" class="p-10 bg-white rounded-xl drop-shadow-lg space-y-5">
+        <h1 class="text-center text-3xl">G-stock</h1>
+        <div th:if="${param.error}">
+            <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
+                Invalid username and password.
+            </div>
+        </div>
+
+        <div th:if="${param.username}">
+
+            <div class="bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base blue mb-3" role="alert">
+                There is already a user registered with the username/email provided.
+            </div>
+        </div>
+
+        <div th:if="${param.success}">
+
+            <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base blue mb-3" role="alert">
+                You've successfully registered to our awesome app!
+            </div>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            <label class="text-sm font-light" for="email">FirstName</label>
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="text" placeholder="Your FirstName"
+                   th:field="*{firstName}" id="firstname" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            <label class="text-sm font-light" for="email">LastName</label>
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="text" placeholder="Your LastName"
+                   th:field="*{lastName}" id="lastname" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            <label class="text-sm font-light" for="email">Email</label>
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="email" placeholder="Your Email"
+                   th:field="*{userName}" id="email" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="flex flex-col space-y-2">
+            <label class="text-sm font-light" for="password">Password</label>
+            <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="password"
+                   placeholder="Your Password" th:field="*{password}" id="password" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div>
+            <input type="checkbox" name="remember" id="remember" />
+            <label class="text-sm font-light" for="remember">Remember me</label>
+        </div>
+
+        <button class="w-full px-10 py-2 bg-blue-600 text-white rounded-md
+            hover:bg-blue-500 hover:drop-shadow-md duration-300 ease-in" type="submit">
+            Sign Up
+        </button>
+
+
+
+        <p  class="text-center mt-5 text-blue-400"><a th:href="@{/login}">You have already account!!!</a></p>
+    </form>
+</div>
+
+<!-- jQuery 2.2.0 -->
+<script src="/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<!--<script src="/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>-->
+</body>
+</html>
