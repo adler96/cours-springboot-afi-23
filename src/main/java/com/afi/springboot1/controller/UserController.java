@@ -56,11 +56,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/showUpdateForm/{id}")
-	public ModelAndView showUpdateForm(@RequestParam Long userId) {
-		ModelAndView mav = new ModelAndView("admin/auth/updateUser");
-		User user = us.rechercher(userId);
-		mav.addObject("user", user);
+	public String showUpdateForm(Model model, @PathVariable("id") long id) {
+		User user = us.rechercher(id);
+		model.addAttribute("user", user);
 		
-		return mav;
+		return "admin/auth/updateUser";
 	}
 }

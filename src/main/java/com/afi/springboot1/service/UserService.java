@@ -22,7 +22,18 @@ public class UserService implements UserInterface{
 	@Override
 	public void ajouter(User u) {
 		// TODO Auto-generated method stub
-		ur.save(u);
+		if(u.getId() == 0) {
+			System.out.println("Valeur de l'id : "+u.getId());
+			ur.save(u);	
+			
+		} else {
+			User uU = ur.findById(u.getId()).get();
+			uU.setNom(u.getNom());
+			uU.setPrenom(u.getPrenom());
+			uU.setLogin(u.getLogin());
+			uU.setPassword(u.getPassword());
+			ur.save(uU);
+		}
 	}
 
 	@Override
