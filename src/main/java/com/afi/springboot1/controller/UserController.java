@@ -62,4 +62,10 @@ public class UserController {
 		
 		return "admin/auth/updateUser";
 	}
+	
+	@GetMapping("/recherche/{input}")
+	public String listeParNom(Model model, @PathVariable("input") String input) {
+		model.addAttribute("UserList", us.rechercheParNom(input));
+		return "admin/auth/listeParNom";
+	}
 }

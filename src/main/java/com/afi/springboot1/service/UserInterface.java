@@ -12,4 +12,5 @@ public interface UserInterface {
 	public void supprimer(Long id);
 	public List<User> afficher();
 	public User rechercher(Long id);
+	public Iterable<User> rechercheParNom(String nom);
 }

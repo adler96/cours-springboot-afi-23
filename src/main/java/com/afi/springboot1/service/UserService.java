@@ -68,4 +68,10 @@ public class UserService implements UserInterface{
 		return u;
 	}
 
+	@Override
+	public Iterable<User> rechercheParNom(String nom) {
+		// TODO Auto-generated method stub
+		return ur.findByNom(nom);
+	}
+
 }
