@@ -10,8 +10,11 @@ import com.afi.springboot1.entity.User;
 
 @Repository
 @Component
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Long> {
 
 	// recherche en fonction du nom
-	public Iterable<User> findByNom(String nom); 
+	public Iterable<User> findByNom(String nom);
+	
+	//login
+	public User findByLoginAndPassword(String login, String password);
 }

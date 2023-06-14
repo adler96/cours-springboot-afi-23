@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages={"com.afi.springboot1.*"})
 public class SpringBoot1Application {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBoot1Application.class, args);
 	}

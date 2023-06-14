@@ -13,4 +13,5 @@ public interface UserInterface {
 	public List<User> afficher();
 	public User rechercher(Long id);
 	public Iterable<User> rechercheParNom(String nom);
+	public User testLogin(String login, String password);
 }

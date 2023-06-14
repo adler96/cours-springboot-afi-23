@@ -63,9 +63,35 @@ public class UserController {
 		return "admin/auth/updateUser";
 	}
 	
-	@GetMapping("/recherche/{input}")
-	public String listeParNom(Model model, @PathVariable("input") String input) {
-		model.addAttribute("UserList", us.rechercheParNom(input));
+	// presente les resultats de recherche
+	@GetMapping("/rechercheParNom/nom")
+	public String listeParNom(@ModelAttribute("user") User user, BindingResult result, Model model) {
+		model.addAttribute("UserList", us.rechercheParNom(user.getNom()));
 		return "admin/auth/listeParNom";
+	}
+	
+	// affiche le formulaire de recherche
+	@GetMapping("/nom")
+	public String viewSearchForm(Model model) {
+		model.addAttribute("user", new User());
+		return "admin/auth/rechercheParNom";
+	}
+	
+	@GetMapping("/login")
+	public String viewLoginPage(Model model) {
+		model.addAttribute("user", new User());
+		return "admin/auth/login";
+	}
+	
+	@GetMapping("/login/testLogin")
+	public String connexion(@ModelAttribute("user") User user, BindingResult result, Model model) {
+		User u = null;
+		u = us.testLogin(user.getLogin(), user.getPassword());
+		
+		if(u == null) {
+			return "redirect:/login";
+		} else {
+			return "redirect:/liste";
+		}
 	}
 }

@@ -74,4 +74,10 @@ public class UserService implements UserInterface{
 		return ur.findByNom(nom);
 	}
 
+	@Override
+	public User testLogin(String login, String password) {
+		// TODO Auto-generated method stub
+		return ur.findByLoginAndPassword(login, password);
+	}
+
 }

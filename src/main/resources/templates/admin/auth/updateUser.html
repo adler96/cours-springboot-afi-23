@@ -18,21 +18,21 @@
     <form th:action="@{/newUser/save}" th:object="${user}" method="post" class="p-10 bg-white rounded-xl drop-shadow-lg space-y-5">
         <h1 class="text-center text-3xl">Formulaire modification</h1>
         <div class="flex flex-col space-y-2">
-            
+            <label>id:</label>
             <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="text" 
                    th:field="*{id}"  id="id">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         
         <div class="flex flex-col space-y-2">
-            
+            <label>nom:</label>
             <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="text" 
                    th:field="*{nom}"  id="nom">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
 
         <div class="flex flex-col space-y-2">
-            
+            <label>prenom:</label>
             <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="text" 
                    th:field="*{prenom}" id="prenom">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -40,13 +40,13 @@
        
 
         <div class="flex flex-col space-y-2">
-          
+          <label>email:</label>
             <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="email" 
                    th:field="*{login}" id="login">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="flex flex-col space-y-2">
-           
+           <label>Mot de passe:</label>
             <input class="w-96 px-3 py-2 rounded-md border border-slate-400" type="password"
                    th:field="*{password}" id="password" >
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
